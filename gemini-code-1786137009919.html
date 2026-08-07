@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yara Artisan Bakery - Handcrafted Macaroni</title>
+    <!-- Google Fonts: Playfair Display for a rustic, artisan feel -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Basic Reset & Typography */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            background-color: #FFF9E6;
+            color: #5C0000;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            /* Đã trỏ ảnh nền vào thư mục images/ */
+            background-image: linear-gradient(rgba(178, 34, 34, 0.85), rgba(218, 165, 32, 0.85)), url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+        }
+
+        .hero-logo {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            color: #FFDF00;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #FFF;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .hero-status {
+            font-size: 1.2rem;
+            background-color: #D32F2F;
+            border: 2px solid #FFDF00;
+            padding: 10px 25px;
+            border-radius: 30px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        /* --- Promo / Offer Section (Google Form) --- */
+        .promo-section {
+            background-color: #FFFFFF;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 6px solid #D32F2F;
+            border-bottom: 6px solid #D32F2F;
+        }
+
+        .promo-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .promo-title {
+            font-size: 2.5rem;
+            color: #D32F2F;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .promo-text {
+            font-size: 1.2rem;
+            color: #5C0000;
+            margin-bottom: 30px;
+        }
+
+        .promo-highlight {
+            font-weight: bold;
+            color: #FFF;
+            background-color: #D32F2F;
+            padding: 2px 10px;
+            border-radius: 5px;
+            font-size: 1.3rem;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.15);
+            border: 2px solid #FFD54F;
+        }
+
+        /* --- Products & Shapes Section --- */
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            color: #B22222;
+            margin-bottom: 20px;
+        }
+
+        .section-text {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            color: #800000;
+        }
+
+        /* Lưới sản phẩm ngày lễ */
+        .holiday-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .holiday-card {
+            background-color: #FFF;
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            border: 2px solid #FFC107;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .holiday-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(211, 47, 47, 0.2);
+            border-color: #D32F2F;
+        }
+
+        /* CSS cho hình ảnh sản phẩm */
+        .shape-img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .shape-title {
+            font-size: 1.5rem;
+            color: #D32F2F;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .shape-desc {
+            font-size: 1.1rem;
+            color: #5C0000;
+            font-style: italic;
+        }
+
+        /* --- Features Section --- */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature {
+            background-color: #FFF;
+            padding: 35px 25px;
+            border-radius: 10px;
+            border-left: 5px solid #D32F2F;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.6rem;
+            color: #B22222;
+            margin-bottom: 10px;
+        }
+
+        /* --- Location Section --- */
+        .location {
+            background-color: #FFECB3;
+            padding: 60px 20px;
+            border-top: 2px dashed #D32F2F;
+        }
+
+        .location-details {
+            font-size: 1.4rem;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #D32F2F;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #800000;
+            color: #FFF9E6;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: auto;
+            border-top: 5px solid #FFD700;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .promo-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <img src="images/logo.jpeg" alt="Yara Artisan Bakery Logo" class="hero-logo">
+        <h1 class="hero-title">Welcome to Yara</h1>
+        <p class="hero-subtitle">Handcrafted, small-batch macaroni from Waukee, Iowa.</p>
+        <span class="hero-status">Opening Fall 2026</span>
+    </header>
+
+
+
+    <!-- Holiday & Special Shapes Section -->
+    <section class="section">
+        <h2 class="section-title">Festive & Fun Shapes</h2>
+        <p class="section-text">
+            Celebrate every season and occasion with our specially crafted macaroni shapes! Colored naturally with sweet
+            peppers, spinach, and pumpkins, they bring joy to every family meal.
+        </p>
+
+        <div class="holiday-grid">
+            <div class="holiday-card">
+                <img src="images/halloween.png" alt="Halloween Macaroni" class="shape-img">
+                <h3 class="shape-title">Halloween</h3>
+                <p class="shape-desc">Spooky Pumpkins & Ghosts</p>
+            </div>
+            <div class="holiday-card">
+                <img src="images/thanksgiving.png" alt="Thanksgiving Macaroni" class="shape-img">
+                <h3 class="shape-title">Thanksgiving</h3>
+                <p class="shape-desc">Festive Turkeys</p>
+            </div>
+            <div class="holiday-card">
+                <img src="images/christmas.png" alt="Christmas Macaroni" class="shape-img">
+                <h3 class="shape-title">Christmas</h3>
+                <p class="shape-desc">Holiday Pine Trees</p>
+            </div>
+            <div class="holiday-card">
+                <img src="images/valentine.png" alt="Valentine's Macaroni" class="shape-img">
+                <h3 class="shape-title">Valentine's Day</h3>
+                <p class="shape-desc">Romantic Hearts</p>
+            </div>
+            <div class="holiday-card">
+                <img src="images/easter.png" alt="Easter Macaroni" class="shape-img">
+                <h3 class="shape-title">Easter</h3>
+                <p class="shape-desc">Spring Eggs</p>
+            </div>
+            <div class="holiday-card">
+                <img src="images/everyday.png" alt="Everyday Macaroni" class="shape-img">
+                <h3 class="shape-title">Everyday Fun</h3>
+                <p class="shape-desc">Cute Cats & Dogs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" style="padding-top: 0;">
+        <h2 class="section-title">Art in Every Bite</h2>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">👩‍🍳</div>
+                <h3 class="feature-title">Handcrafted</h3>
+                <p>Each piece is meticulously shaped by hand, ensuring the perfect texture to hold your favorite sauces.
+                </p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌾</div>
+                <h3 class="feature-title">Small Batch</h3>
+                <p>Produced in limited quantities to guarantee freshness, flavor, and absolute attention to detail.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🍅</div>
+                <h3 class="feature-title">Fresh Ingredients</h3>
+                <p>Colored naturally with real vegetables like organic spinach, local tomatoes, and sweet bell peppers.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="section location">
+        <h2 class="section-title">See You at the Market!</h2>
+        <p class="section-text" style="margin-bottom: 10px;">
+            We are proud to call Waukee, Iowa our home. We can't wait to share our handcrafted macaroni with you at the
+            local Farmers Market soon.
+        </p>
+        <div class="location-details">
+            📍 Waukee, Iowa, USA
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="images/logo.jpeg" alt="Yara Artisan Bakery Logo" class="footer-logo">
+        <p>Yara Artisan Bakery • Waukee, Iowa • Est. 2026</p>
+        <p>Hand to Heart. Farm to Table.</p>
+    </footer>
+
+</body>
+
+</html>
