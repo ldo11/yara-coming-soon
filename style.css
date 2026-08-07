@@ -1,0 +1,419 @@
+/* --- CSS Variables --- */
+:root {
+    --color-red: #D32F2F;
+    --color-red-dark: #B22222;
+    --color-gold: #FFC107;
+    --color-gold-light: #FFDF00;
+    --color-cream: #FAF8F5;
+    --color-text: #2C1810;
+    --color-text-light: #5A433A;
+    --color-white: #FFFFFF;
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Outfit', sans-serif;
+    
+    --transition-fast: 0.3s ease;
+    --transition-slow: 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* --- Base & Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-cream);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-red-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Hero Section --- */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Slow-moving gradient background */
+    background: linear-gradient(-45deg, rgba(178, 34, 34, 0.1), rgba(255, 193, 7, 0.1), rgba(250, 248, 245, 0.5), rgba(211, 47, 47, 0.05));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-content {
+    max-width: 800px;
+    z-index: 1;
+}
+
+.logo-container {
+    margin-bottom: 2rem;
+}
+
+.logo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 25px rgba(178, 34, 34, 0.2);
+    border: 4px solid var(--color-white);
+    transition: transform var(--transition-slow);
+}
+
+.logo:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.hero-title {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.hero-title .highlight {
+    color: var(--color-gold);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    color: var(--color-text-light);
+    font-weight: 300;
+}
+
+/* --- Countdown Section --- */
+.countdown-section {
+    padding: 5rem 0;
+    background-color: var(--color-white);
+    text-align: center;
+    border-top: 1px solid rgba(211, 47, 47, 0.1);
+    border-bottom: 1px solid rgba(211, 47, 47, 0.1);
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: var(--color-cream);
+    border: 2px solid var(--color-gold);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    min-width: 100px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.time-box::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 50%;
+    background: rgba(255,255,255,0.4);
+    z-index: 1;
+}
+
+.time-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-red-dark);
+    font-family: var(--font-body);
+    line-height: 1;
+    z-index: 2;
+    position: relative;
+}
+
+.time-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-text-light);
+    margin-top: 0.5rem;
+    font-weight: 600;
+    z-index: 2;
+    position: relative;
+}
+
+.time-separator {
+    font-size: 3rem;
+    color: var(--color-gold);
+    font-family: var(--font-heading);
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
+/* --- Product Showcase --- */
+.showcase-section {
+    padding: 6rem 0;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.product-card {
+    background: var(--color-white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all var(--transition-slow);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.product-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(211, 47, 47, 0.15);
+    border-color: rgba(255, 193, 7, 0.3);
+}
+
+.card-img-wrapper {
+    overflow: hidden;
+    height: 300px;
+    position: relative;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.08);
+}
+
+.card-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.product-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.product-desc {
+    color: var(--color-text-light);
+    font-size: 1.05rem;
+}
+
+/* --- Wish Section --- */
+.wish-section {
+    padding: 5rem 0;
+    background-color: var(--color-cream);
+    text-align: center;
+}
+
+.wish-container {
+    max-width: 800px;
+    background: var(--color-white);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 2px dashed var(--color-gold);
+}
+
+.wish-desc {
+    font-size: 1.15rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+}
+
+.wish-button {
+    display: inline-block;
+    background-color: var(--color-red-dark);
+    color: var(--color-white);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all var(--transition-fast);
+    box-shadow: 0 5px 15px rgba(178, 34, 34, 0.3);
+}
+
+.wish-button:hover {
+    background-color: var(--color-red);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(178, 34, 34, 0.4);
+}
+
+/* --- Waitlist Section --- */
+.waitlist-section {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--color-red-dark) 0%, var(--color-red) 100%);
+    color: var(--color-white);
+    text-align: center;
+}
+
+.waitlist-title {
+    color: var(--color-white);
+}
+
+.waitlist-desc {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+    opacity: 0.9;
+}
+
+.waitlist-form {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.email-input {
+    flex: 1;
+    min-width: 250px;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    outline: none;
+    transition: box-shadow var(--transition-fast);
+}
+
+.email-input:focus {
+    box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.5);
+}
+
+.cta-button {
+    background-color: var(--color-gold);
+    color: var(--color-text);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    font-family: var(--font-body);
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all var(--transition-fast);
+}
+
+.cta-button:hover {
+    background-color: var(--color-gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.form-message {
+    margin-top: 1.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    transition: opacity var(--transition-fast);
+}
+
+.form-message.hidden {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--color-text);
+    color: var(--color-white);
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* --- Animations (Fade in on scroll) --- */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .waitlist-form {
+        flex-direction: column;
+    }
+    .cta-button {
+        width: 100%;
+    }
+    .time-box {
+        min-width: 75px;
+        padding: 1rem 0.5rem;
+    }
+    .time-value {
+        font-size: 1.8rem;
+    }
+    .time-label {
+        font-size: 0.7rem;
+    }
+    .time-separator {
+        font-size: 2rem;
+    }
+}

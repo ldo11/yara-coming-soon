@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yara Artisan Bakery - Coming Soon</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-content fade-in-up">
+            <div class="logo-container">
+                <img src="images/logo.jpeg" alt="Yara Artisan Bakery Logo" class="logo">
+            </div>
+            <h1 class="hero-title">Artisan Goodness is Coming to <span class="highlight">Waukee, Iowa</span></h1>
+            <p class="hero-subtitle">Handcrafted small-batch pastas and artisanal breads, baked with passion.</p>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section fade-in-up scroll-element">
+        <div class="container">
+            <h2 class="section-title">The Ovens Warm Up In</h2>
+            <div class="countdown-timer" id="countdown">
+                <div class="time-box">
+                    <span class="time-value" id="days">30</span>
+                    <span class="time-label">Days</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-box">
+                    <span class="time-value" id="hours">00</span>
+                    <span class="time-label">Hours</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-box">
+                    <span class="time-value" id="minutes">00</span>
+                    <span class="time-label">Minutes</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-box">
+                    <span class="time-value" id="seconds">00</span>
+                    <span class="time-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="showcase-section fade-in-up scroll-element">
+        <div class="container">
+            <h2 class="section-title">A Taste of What's Coming</h2>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1551462147-ff29053bfc14?q=80&w=800&auto=format&fit=crop" alt="Handcrafted Veggie Macaroni" class="product-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="product-title">Handcrafted Veggie Macaroni</h3>
+                        <p class="product-desc">Naturally colored with organic spinach, sweet peppers, and tomatoes. Available in fun seasonal and animal shapes!</p>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop" alt="Freshly Artisanal Bread" class="product-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="product-title">Freshly Artisanal Bread</h3>
+                        <p class="product-desc">Slow-fermented sourdough and rustic loaves, baked fresh daily with locally sourced grains.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Make a Wish Section -->
+    <section class="wish-section fade-in-up scroll-element">
+        <div class="container wish-container">
+            <h2 class="section-title">Send Us a Wish!</h2>
+            <p class="wish-desc">Got a favorite pastry or pasta shape? Send us your wish via email! We'll reply with a voucher for a <strong>FREE PRODUCT</strong> on your first purchase.</p>
+            <a href="mailto:hello@yarabakery.com?subject=My%20Wish%20for%20Yara%20Artisan%20Bakery&body=Here%20is%20my%20wish%20for%20the%20bakery:%20" class="wish-button">Email Your Wish</a>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> Yara Artisan Bakery. All rights reserved.</p>
+            <p>Waukee, Iowa</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
